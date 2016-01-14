@@ -664,4 +664,8 @@
     <string name="seek_pref_0">0%</string>
     <string name="seek_pref_val">x%</string>
     <string name="seek_pref_max">100%</string>
+
+    <string name="notification_title">Show Hacker\'s Keyboard</string>
+    <string name="notification_body">Select this to open the keyboard. Disable in settings.</string>
+
 </resources>

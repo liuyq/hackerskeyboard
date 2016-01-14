@@ -500,9 +500,8 @@ public class LatinIME extends InputMethodService implements
             PendingIntent contentIntent = PendingIntent.getBroadcast(getApplicationContext(), 1, notificationIntent, 0);
             //PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
             
-            String title = "Show Hacker's Keyboard";
-            String body = "Select this to open the keyboard. Disable in settings.";
-            
+            CharSequence title = getResources().getText(R.string.notification_title);
+            CharSequence body = getResources().getText(R.string.notification_body);
             notification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
             notification.setLatestEventInfo(getApplicationContext(), title, body, contentIntent);
             mNotificationManager.notify(ID, notification);
