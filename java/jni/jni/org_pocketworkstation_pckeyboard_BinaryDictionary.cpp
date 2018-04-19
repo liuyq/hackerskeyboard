@@ -30,6 +30,8 @@ using namespace latinime;
 //
 // helper function to throw an exception
 //
+
+/*
 static void throwException(JNIEnv *env, const char* ex, const char* fmt, int data)
 {
     if (jclass cls = env->FindClass(ex)) {
@@ -39,9 +41,9 @@ static void throwException(JNIEnv *env, const char* ex, const char* fmt, int dat
         env->DeleteLocalRef(cls);
     }
 }
-
+*/
 static jlong latinime_BinaryDictionary_open
-        (JNIEnv *env, jobject object, jobject dictDirectBuffer,
+        (JNIEnv *env, jobject object __unused, jobject dictDirectBuffer,
          jint typedLetterMultiplier, jint fullWordMultiplier, jint size)
 {
     void *dict = env->GetDirectBufferAddress(dictDirectBuffer);
@@ -54,7 +56,7 @@ static jlong latinime_BinaryDictionary_open
 }
 
 static int latinime_BinaryDictionary_getSuggestions(
-        JNIEnv *env, jobject object, jlong dict, jintArray inputArray, jint arraySize,
+        JNIEnv *env, jobject object __unused, jlong dict, jintArray inputArray, jint arraySize,
         jcharArray outputArray, jintArray frequencyArray, jint maxWordLength, jint maxWords,
         jint maxAlternatives, jint skipPos, jintArray nextLettersArray, jint nextLettersSize)
 {
@@ -82,7 +84,7 @@ static int latinime_BinaryDictionary_getSuggestions(
 }
 
 static int latinime_BinaryDictionary_getBigrams
-        (JNIEnv *env, jobject object, jlong dict, jcharArray prevWordArray, jint prevWordLength,
+        (JNIEnv *env, jobject object __unused, jlong dict, jcharArray prevWordArray, jint prevWordLength,
          jintArray inputArray, jint inputArraySize, jcharArray outputArray,
          jintArray frequencyArray, jint maxWordLength, jint maxBigrams, jint maxAlternatives)
 {
@@ -108,7 +110,7 @@ static int latinime_BinaryDictionary_getBigrams
 
 
 static jboolean latinime_BinaryDictionary_isValidWord
-        (JNIEnv *env, jobject object, jlong dict, jcharArray wordArray, jint wordLength)
+        (JNIEnv *env, jobject object __unused, jlong dict, jcharArray wordArray, jint wordLength)
 {
     Dictionary *dictionary = (Dictionary*) dict;
     if (dictionary == NULL) return (jboolean) false;
@@ -121,9 +123,9 @@ static jboolean latinime_BinaryDictionary_isValidWord
 }
 
 static void latinime_BinaryDictionary_close
-        (JNIEnv *env, jobject object, jlong dict)
+        (JNIEnv *env __unused, jobject object __unused, jlong dict)
 {
-    Dictionary *dictionary = (Dictionary*) dict;
+    //Dictionary *dictionary = (Dictionary*) dict;
     delete (Dictionary*) dict;
 }
 
@@ -167,7 +169,7 @@ static int registerNatives(JNIEnv *env)
 /*
  * Returns the JNI version on success, -1 on failure.
  */
-jint JNI_OnLoad(JavaVM* vm, void* reserved)
+jint JNI_OnLoad(JavaVM* vm, void* reserved __unused)
 {
     JNIEnv* env = NULL;
     jint result = -1;

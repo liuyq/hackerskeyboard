@@ -5,6 +5,8 @@ LOCAL_MODULE_TAGS := debug
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
+#LOCAL_SDK_VERSION := current
+LOCAL_SDK_VERSION := 22
 LOCAL_PACKAGE_NAME := PCKeyboard
 
 LOCAL_CERTIFICATE := shared

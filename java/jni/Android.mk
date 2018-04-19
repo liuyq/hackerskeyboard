@@ -16,5 +16,7 @@ LOCAL_SRC_FILES := \
 LOCAL_MODULE := libjni_pckeyboard
 
 LOCAL_MODULE_TAGS := debug
+LOCAL_CPPFLAGS += -Wno-unused-value
+LOCAL_CFLAGS += "-D__unused=__attribute__((unused))"
 
 include $(BUILD_SHARED_LIBRARY)
